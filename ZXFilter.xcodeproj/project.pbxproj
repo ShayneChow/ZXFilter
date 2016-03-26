@@ -15,6 +15,7 @@
 		F0C5D85B1CA628970009A364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C5D8591CA628970009A364 /* LaunchScreen.storyboard */; };
 		F0C5D8661CA628970009A364 /* ZXFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5D8651CA628970009A364 /* ZXFilterTests.m */; };
 		F0C5D8711CA628970009A364 /* ZXFilterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5D8701CA628970009A364 /* ZXFilterUITests.m */; };
+		F0C5D8841CA62D090009A364 /* ZXFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5D8831CA62D090009A364 /* ZXFilterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		F0C5D86C1CA628970009A364 /* ZXFilterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZXFilterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C5D8701CA628970009A364 /* ZXFilterUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFilterUITests.m; sourceTree = "<group>"; };
 		F0C5D8721CA628970009A364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0C5D8821CA62D090009A364 /* ZXFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXFilterViewController.h; sourceTree = "<group>"; };
+		F0C5D8831CA62D090009A364 /* ZXFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXFilterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +104,12 @@
 		F0C5D84A1CA628970009A364 /* ZXFilter */ = {
 			isa = PBXGroup;
 			children = (
+				F0C5D87E1CA629280009A364 /* ZXFilterView */,
 				F0C5D84E1CA628970009A364 /* AppDelegate.h */,
 				F0C5D84F1CA628970009A364 /* AppDelegate.m */,
 				F0C5D8511CA628970009A364 /* ViewController.h */,
 				F0C5D8521CA628970009A364 /* ViewController.m */,
 				F0C5D8541CA628970009A364 /* Main.storyboard */,
-				F0C5D8571CA628970009A364 /* Assets.xcassets */,
-				F0C5D8591CA628970009A364 /* LaunchScreen.storyboard */,
-				F0C5D85C1CA628970009A364 /* Info.plist */,
 				F0C5D84B1CA628970009A364 /* Supporting Files */,
 			);
 			path = ZXFilter;
@@ -117,6 +118,9 @@
 		F0C5D84B1CA628970009A364 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F0C5D8571CA628970009A364 /* Assets.xcassets */,
+				F0C5D8591CA628970009A364 /* LaunchScreen.storyboard */,
+				F0C5D85C1CA628970009A364 /* Info.plist */,
 				F0C5D84C1CA628970009A364 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +142,39 @@
 				F0C5D8721CA628970009A364 /* Info.plist */,
 			);
 			path = ZXFilterUITests;
+			sourceTree = "<group>";
+		};
+		F0C5D87E1CA629280009A364 /* ZXFilterView */ = {
+			isa = PBXGroup;
+			children = (
+				F0C5D87F1CA629280009A364 /* Controller */,
+				F0C5D8801CA629280009A364 /* Model */,
+				F0C5D8811CA629280009A364 /* View */,
+			);
+			path = ZXFilterView;
+			sourceTree = "<group>";
+		};
+		F0C5D87F1CA629280009A364 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F0C5D8821CA62D090009A364 /* ZXFilterViewController.h */,
+				F0C5D8831CA62D090009A364 /* ZXFilterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F0C5D8801CA629280009A364 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F0C5D8811CA629280009A364 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +309,7 @@
 			files = (
 				F0C5D8531CA628970009A364 /* ViewController.m in Sources */,
 				F0C5D8501CA628970009A364 /* AppDelegate.m in Sources */,
+				F0C5D8841CA62D090009A364 /* ZXFilterViewController.m in Sources */,
 				F0C5D84D1CA628970009A364 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
