@@ -7,9 +7,14 @@
 //
 
 #import "ZXFilterViewController.h"
+#import "ZXFilterTag.h"
+#import "ZXFilterTagCell.h"
+
+static NSString *CELLFORTAGID = @"filterTagCellID";
 
 @interface ZXFilterViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *dataArr;
 @end
 
 @implementation ZXFilterViewController
@@ -17,6 +22,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.showsHorizontalScrollIndicator = NO;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.backgroundColor = [UIColor whiteColor];
+    
+    [self loadDataArr];
+}
+
+- (void)loadDataArr {
+    if (_dataArr == nil) {
+        // 解析本地JSON文件获取数据，生产环境中从网络获取JSON
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"buttons" ofType:@"json"];
+        NSError *error = nil;
+        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+        NSArray *arr = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingAllowFragments
+                                                         error:&error];
+
+        _dataArr = arr;
+        if (error) {
+            NSLog(@"orders.json - fail: %@", error.description);
+        }
+    }
 }
 
 - (IBAction)resetButtonClicked {
@@ -29,30 +58,31 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return _dataArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
-    }
-    return 3;
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return _dataArr[section][@"groupName"];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier=@"UITableViewCellIdentifierKey1";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if(!cell){
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"other - %zd - %zd", indexPath.section, indexPath.row];
+    ZXFilterTagCell * cell = [[ZXFilterTagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELLFORTAGID];
+
+    cell.buttonArray = self.dataArr[indexPath.section][@"buttonArray"];
+
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 先取消选中状态
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *temArray = _dataArr[indexPath.section][@"buttonArray"];
+    NSInteger total = temArray.count;
+    NSInteger rows = (total / COLUMN) + ((total % COLUMN) > 0 ? 1 : 0);
+    return  (float)ROWHEIHT * rows + ROWSPACE * (rows + 1);
 }
 
 @end

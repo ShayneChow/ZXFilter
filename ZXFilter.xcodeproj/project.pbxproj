@@ -16,6 +16,9 @@
 		F0C5D8661CA628970009A364 /* ZXFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5D8651CA628970009A364 /* ZXFilterTests.m */; };
 		F0C5D8711CA628970009A364 /* ZXFilterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5D8701CA628970009A364 /* ZXFilterUITests.m */; };
 		F0C5D8841CA62D090009A364 /* ZXFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5D8831CA62D090009A364 /* ZXFilterViewController.m */; };
+		F0C5D8861CA632580009A364 /* buttons.json in Resources */ = {isa = PBXBuildFile; fileRef = F0C5D8851CA632580009A364 /* buttons.json */; };
+		F0C5D8891CA6587D0009A364 /* ZXFilterTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5D8881CA6587D0009A364 /* ZXFilterTag.m */; };
+		F0C5D8901CA65D640009A364 /* ZXFilterTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5D88F1CA65D640009A364 /* ZXFilterTagCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,11 @@
 		F0C5D8721CA628970009A364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0C5D8821CA62D090009A364 /* ZXFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXFilterViewController.h; sourceTree = "<group>"; };
 		F0C5D8831CA62D090009A364 /* ZXFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXFilterViewController.m; sourceTree = "<group>"; };
+		F0C5D8851CA632580009A364 /* buttons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buttons.json; sourceTree = "<group>"; };
+		F0C5D8871CA6587D0009A364 /* ZXFilterTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXFilterTag.h; sourceTree = "<group>"; };
+		F0C5D8881CA6587D0009A364 /* ZXFilterTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXFilterTag.m; sourceTree = "<group>"; };
+		F0C5D88E1CA65D640009A364 /* ZXFilterTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXFilterTagCell.h; sourceTree = "<group>"; };
+		F0C5D88F1CA65D640009A364 /* ZXFilterTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXFilterTagCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +174,9 @@
 		F0C5D8801CA629280009A364 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F0C5D8851CA632580009A364 /* buttons.json */,
+				F0C5D8871CA6587D0009A364 /* ZXFilterTag.h */,
+				F0C5D8881CA6587D0009A364 /* ZXFilterTag.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +184,8 @@
 		F0C5D8811CA629280009A364 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F0C5D88E1CA65D640009A364 /* ZXFilterTagCell.h */,
+				F0C5D88F1CA65D640009A364 /* ZXFilterTagCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +296,7 @@
 				F0C5D85B1CA628970009A364 /* LaunchScreen.storyboard in Resources */,
 				F0C5D8581CA628970009A364 /* Assets.xcassets in Resources */,
 				F0C5D8561CA628970009A364 /* Main.storyboard in Resources */,
+				F0C5D8861CA632580009A364 /* buttons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +324,8 @@
 				F0C5D8531CA628970009A364 /* ViewController.m in Sources */,
 				F0C5D8501CA628970009A364 /* AppDelegate.m in Sources */,
 				F0C5D8841CA62D090009A364 /* ZXFilterViewController.m in Sources */,
+				F0C5D8901CA65D640009A364 /* ZXFilterTagCell.m in Sources */,
+				F0C5D8891CA6587D0009A364 /* ZXFilterTag.m in Sources */,
 				F0C5D84D1CA628970009A364 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,73 @@
+[
+  {
+  "groupName": "时间",
+  "buttonArray": [
+                  {
+                  "title": "今天"
+                  },
+                  {
+                  "title": "本周"
+                  },
+                  {
+                  "title": "本月"
+                  },
+                  {
+                  "title": "三个月内"
+                  },
+                  {
+                  "title": "三个月前"
+                  }
+            ]
+  },
+  {
+  "groupName": "渠道",
+  "buttonArray": [
+                  {
+                  "title": "支付宝"
+                  },
+                  {
+                  "title": "微信"
+                  },
+                  {
+                  "title": "其他"
+                  }
+                  ]
+  },
+  {
+  "groupName": "状态",
+  "buttonArray": [
+                  {
+                  "title": "收款成功"
+                  },
+                  {
+                  "title": "全额退款"
+                  },
+                  {
+                  "title": "部分退款"
+                  },
+                  {
+                  "title": "收款失败"
+                  }
+                  ]
+  },
+  {
+  "groupName": "收银员",
+  "buttonArray": [
+                  {
+                  "title": "店长大刘"
+                  },
+                  {
+                  "title": "小王"
+                  },
+                  {
+                  "title": "阿杰"
+                  },
+                  {
+                  "title": "妞妞"
+                  },
+                  {
+                  "title": "临时工小李"
+                  }
+                  ]
+  }
+]
