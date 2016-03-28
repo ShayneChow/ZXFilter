@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class UIGestureRecognizer;
+
 #define Screen_Width    ([UIScreen mainScreen].bounds.size.width)
 
 #define Screen_Height   ([UIScreen mainScreen].bounds.size.height)
@@ -18,12 +20,14 @@
 
 #define ROWHEIHT 30
 
-#define ROWSPACE 10
+#define ROWSPACE 20
 
 #define ROWWIDTH  (Screen_Width - 4*ROWSPACE)/3
 
 @interface ZXFilterTagCell : UITableViewCell
 
 @property (strong, nonatomic) NSArray *buttonArray;
+
+@property (copy, nonatomic) NSString *buttonTitle;
 
 @end

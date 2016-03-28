@@ -31,27 +31,27 @@
 - (void)setButtonArray:(NSArray *)buttonArray {
     _buttonArray = buttonArray;
     NSInteger total = buttonArray.count;
+    
     for (int i = 0; i < total; i++) {
         int row = i / COLUMN;
         int column = i % COLUMN;
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *btn = [[UIButton alloc] init];
+        
         btn.frame = CGRectMake(ROWSPACE + ROWWIDTH*column + ROWSPACE * column, ROWSPACE + (ROWHEIHT + ROWSPACE)*row, ROWWIDTH, ROWHEIHT);
-        btn.tag = i;
+        
         btn.backgroundColor = [UIColor colorWithWhite:0.898 alpha:1.000];
         [btn setTitle:buttonArray[i][@"title"] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14.0];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(subCateBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(subBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         btn.layer.cornerRadius = 5;
         btn.clipsToBounds = YES;
         [self.contentView addSubview:btn];
-        
     }
 }
 
--(void)subCateBtnAction:(UIButton *)btn {
-    
-    NSLog(@"点击 %@", btn);
+- (void)subBtnAction:(UIButton *)btn {
+    NSLog(@"点击Button事件");
 }
 
 @end

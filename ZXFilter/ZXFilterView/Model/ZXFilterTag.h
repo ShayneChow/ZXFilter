@@ -11,6 +11,7 @@
 @interface ZXFilterTag : NSObject
 
 @property (nonatomic, copy) NSString *groupName;
+
 @property (nonatomic, strong) NSMutableArray *buttonArray;
 
 @end

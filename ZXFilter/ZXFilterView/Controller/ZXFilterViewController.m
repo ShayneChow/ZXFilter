@@ -65,24 +65,43 @@ static NSString *CELLFORTAGID = @"filterTagCellID";
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return _dataArr[section][@"groupName"];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZXFilterTagCell * cell = [[ZXFilterTagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELLFORTAGID];
 
     cell.buttonArray = self.dataArr[indexPath.section][@"buttonArray"];
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 
+#pragma mark - Table view delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *temArray = _dataArr[indexPath.section][@"buttonArray"];
     NSInteger total = temArray.count;
     NSInteger rows = (total / COLUMN) + ((total % COLUMN) > 0 ? 1 : 0);
     return  (float)ROWHEIHT * rows + ROWSPACE * (rows + 1);
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 40)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, Screen_Width, 40)];
+    [headerView addSubview:titleLabel];
+    titleLabel.text = _dataArr[section][@"groupName"];
+    titleLabel.font = [UIFont systemFontOfSize:18];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(20, 39, Screen_Width - 40, 1)];
+    line.backgroundColor = [UIColor blackColor];
+    line.alpha = 0.15;
+    [headerView addSubview:line];
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01;
 }
 
 @end
