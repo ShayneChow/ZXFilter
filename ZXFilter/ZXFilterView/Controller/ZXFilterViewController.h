@@ -10,4 +10,5 @@
 typedef void (^callBack)(NSArray *array);
 @interface ZXFilterViewController : UIViewController
 @property (nonatomic, copy) callBack block;
+@property (nonatomic, strong) NSMutableArray *sectionString;
 @end

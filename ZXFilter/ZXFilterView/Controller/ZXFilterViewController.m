@@ -15,16 +15,25 @@ static NSString *CELLFORTAGID = @"filterTagCellID";
 @interface ZXFilterViewController ()<UITableViewDelegate, UITableViewDataSource, ZXCellButtonDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArr;
-@property (nonatomic, strong) NSMutableArray *sectionString;
 @end
 
 @implementation ZXFilterViewController
 
-- (NSMutableArray *)sectionString {
-    if (!_sectionString) {
-        _sectionString = [NSMutableArray arrayWithCapacity:_dataArr.count];
-    }
-    return _sectionString;
+//- (NSMutableArray *)sectionString {
+//    if (!_sectionString) {
+//        _sectionString = [NSMutableArray arrayWithCapacity:_dataArr.count];
+//        for (int i = 0; i < _dataArr.count; i++) {
+//            NSString *tempStr = [[NSString alloc] init];
+//            tempStr = [NSString stringWithFormat:@""];
+//            [_sectionString addObject:tempStr];
+//        }
+//    }
+//    return _sectionString;
+//}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    //[_tableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -38,13 +47,14 @@ static NSString *CELLFORTAGID = @"filterTagCellID";
     
     [self loadDataArr];
     
-    _sectionString = [NSMutableArray arrayWithCapacity:_dataArr.count];
-    for (int i = 0; i < _dataArr.count; i++) {
-        NSString *tempStr = [[NSString alloc] init];
-        tempStr = [NSString stringWithFormat:@""];
-        [_sectionString addObject:tempStr];
-    }
-    
+//    _sectionString = [NSMutableArray arrayWithCapacity:_dataArr.count];
+//    for (int i = 0; i < _dataArr.count; i++) {
+//        NSString *tempStr = [[NSString alloc] init];
+//        tempStr = [NSString stringWithFormat:@""];
+//        [_sectionString addObject:tempStr];
+//    }
+    //NSLog(@"_sectionString : %@", _sectionString);
+    //[_tableView reloadData];
 }
 
 - (void)loadDataArr {
