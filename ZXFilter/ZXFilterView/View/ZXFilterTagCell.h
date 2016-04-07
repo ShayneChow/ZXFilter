@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class UIGestureRecognizer;
+@class UIGestureRecognizer, ZXFilterTagCell;
+
+@protocol ZXCellButtonDelegate <NSObject>
+
+- (void)didClickButtonInCell:(ZXFilterTagCell *)cell;
+
+@end
 
 #define Screen_Width    ([UIScreen mainScreen].bounds.size.width)
 
@@ -26,8 +32,12 @@
 
 @interface ZXFilterTagCell : UITableViewCell
 
+@property (copy, nonatomic) NSString *cellTitle;
+
 @property (strong, nonatomic) NSArray *buttonArray;
 
 @property (copy, nonatomic) NSString *buttonTitle;
+
+@property (nonatomic, weak) id<ZXCellButtonDelegate> delegate;
 
 @end

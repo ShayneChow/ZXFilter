@@ -17,6 +17,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="oNz-5c-Sga" kind="relationship" relationship="rootViewController" id="Car-fc-6Z7"/>
+                        <segue destination="ZMd-JU-XhF" kind="push" id="F2S-Je-jji"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdm-m7-QYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -57,11 +58,14 @@
                         <barButtonItem key="rightBarButtonItem" title="筛选" id="Ylw-fF-Ozk">
                             <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="ZMd-JU-XhF" kind="push" id="Hch-eF-7HH"/>
+                                <action selector="filterButtonClicked:" destination="oNz-5c-Sga" id="Ayf-7M-Bol"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="showValueLabel" destination="UDW-9Q-q73" id="wYL-ih-XQ2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFa-2w-g5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,7 +74,7 @@
         <!--筛选记录-->
         <scene sceneID="qIB-Mh-Ghz">
             <objects>
-                <viewController id="ZMd-JU-XhF" customClass="ZXFilterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FilterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZMd-JU-XhF" customClass="ZXFilterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hEK-pI-7x4"/>
                         <viewControllerLayoutGuide type="bottom" id="3cy-NQ-5C9"/>

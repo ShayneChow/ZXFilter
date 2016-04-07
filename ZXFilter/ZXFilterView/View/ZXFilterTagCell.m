@@ -31,27 +31,44 @@
 - (void)setButtonArray:(NSArray *)buttonArray {
     _buttonArray = buttonArray;
     NSInteger total = buttonArray.count;
-    
+    NSLog(@"%@", _cellTitle);
     for (int i = 0; i < total; i++) {
         int row = i / COLUMN;
         int column = i % COLUMN;
         UIButton *btn = [[UIButton alloc] init];
         
         btn.frame = CGRectMake(ROWSPACE + ROWWIDTH*column + ROWSPACE * column, ROWSPACE + (ROWHEIHT + ROWSPACE)*row, ROWWIDTH, ROWHEIHT);
-        
-        btn.backgroundColor = [UIColor colorWithWhite:0.898 alpha:1.000];
+        [btn setBackgroundImage:[UIImage imageNamed:@"btn_normal_bg"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"btn_selected_bg"] forState:UIControlStateSelected];
         [btn setTitle:buttonArray[i][@"title"] forState:UIControlStateNormal];
+        [btn setTitle:buttonArray[i][@"title"] forState:UIControlStateSelected];
         btn.titleLabel.font = [UIFont systemFontOfSize:14.0];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(subBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         btn.layer.cornerRadius = 5;
         btn.clipsToBounds = YES;
+        
+        if (btn.currentTitle == _cellTitle) {
+            [btn setSelected:YES];
+        } else {
+            [btn setSelected:NO];
+        }
+        
         [self.contentView addSubview:btn];
     }
 }
 
 - (void)subBtnAction:(UIButton *)btn {
-    NSLog(@"点击Button事件");
+    
+    _cellTitle = btn.currentTitle;
+    [btn setSelected:YES];
+    
+    // 通知代理（调用代理的方法）
+    // respondsToSelector:能判断某个对象是否实现了某个方法
+    if ([self.delegate respondsToSelector:@selector(didClickButtonInCell:)]) {
+        [self.delegate didClickButtonInCell:self];
+    }
 }
 
 @end

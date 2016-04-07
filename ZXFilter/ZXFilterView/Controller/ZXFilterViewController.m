@@ -12,12 +12,20 @@
 
 static NSString *CELLFORTAGID = @"filterTagCellID";
 
-@interface ZXFilterViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ZXFilterViewController ()<UITableViewDelegate, UITableViewDataSource, ZXCellButtonDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *sectionString;
 @end
 
 @implementation ZXFilterViewController
+
+- (NSMutableArray *)sectionString {
+    if (!_sectionString) {
+        _sectionString = [NSMutableArray arrayWithCapacity:_dataArr.count];
+    }
+    return _sectionString;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +37,14 @@ static NSString *CELLFORTAGID = @"filterTagCellID";
     _tableView.backgroundColor = [UIColor whiteColor];
     
     [self loadDataArr];
+    
+    _sectionString = [NSMutableArray arrayWithCapacity:_dataArr.count];
+    for (int i = 0; i < _dataArr.count; i++) {
+        NSString *tempStr = [[NSString alloc] init];
+        tempStr = [NSString stringWithFormat:@""];
+        [_sectionString addObject:tempStr];
+    }
+    
 }
 
 - (void)loadDataArr {
@@ -49,11 +65,21 @@ static NSString *CELLFORTAGID = @"filterTagCellID";
 }
 
 - (IBAction)resetButtonClicked {
-    NSLog(@"重置");
+    for (int i = 0; i < _dataArr.count; i++) {
+        [_sectionString setObject:@"" atIndexedSubscript:i];
+    }
+    [_tableView reloadData];
 }
 
 - (IBAction)confirmButtonClicked {
-    NSLog(@"确认");
+    NSArray *array = [NSArray array];
+    array = _sectionString;
+    if (self.block) {
+        self.block(array);
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        NSLog(@"未实现回调");
+    }
 }
 
 #pragma mark - Table view data source
@@ -67,9 +93,11 @@ static NSString *CELLFORTAGID = @"filterTagCellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZXFilterTagCell * cell = [[ZXFilterTagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELLFORTAGID];
-
+    cell.delegate = self;
+    cell.cellTitle = _sectionString[indexPath.section];
     cell.buttonArray = self.dataArr[indexPath.section][@"buttonArray"];
-
+    
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -102,6 +130,17 @@ static NSString *CELLFORTAGID = @"filterTagCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01;
+}
+
+#pragma mark - ZXFilterCellDelegate
+
+- (void)didClickButtonInCell:(ZXFilterTagCell *)cell {
+    // 获取cell的序号
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    // 更新_sectionString
+    [_sectionString setObject:cell.cellTitle atIndexedSubscript:indexPath.section];
+    
+    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

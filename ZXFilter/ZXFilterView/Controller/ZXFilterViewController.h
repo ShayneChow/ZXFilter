@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^callBack)(NSArray *array);
 @interface ZXFilterViewController : UIViewController
-
+@property (nonatomic, copy) callBack block;
 @end
